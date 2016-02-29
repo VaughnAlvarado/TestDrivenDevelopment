@@ -53,23 +53,40 @@ class ExampleTest extends TestCase
 	/**
 	 * @dataProvider eqVals()
 	 */
-	function testEqual( $n, $c, $m, $expected)
+	function testHowManyNumberOf4DigitsInNumber( $number, $countOfDigits4 )
 	{
-		$this->assertEquals( $expected, self::functionTest ( $n, $c, $m ) );
+		$this->assertEquals(self::functionTest($number), $countOfDigits4);
 	}
 
 	//------------------>>Data provider for the functionTest
 	function eqVals()
 	{
 		return [
-			[ ]
+			[10, 1],
+            [4, 1],
+            [3,0],
+            [328, 60]
 		];
 	}	
 
 
-	function functionTest ( $val )
+	function functionTest ( $number )
 	{
-		
+        $counter = 0;
+        for($i = 0; $i <= $number; $i++) {
+            $counter = self::countDigitFour(str_split($i), $counter);
+        }
+        return $counter;
 	}
+	function countDigitFour(array $splitNumber, $number)
+    {
+        foreach ($splitNumber as $seperatedNumber) {
+            if ($seperatedNumber == 4) {
+                $number++;
+                break;
+            }
+        }
+        return $number;
+    }
 
 }
