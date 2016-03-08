@@ -58,7 +58,7 @@ class ExampleTest extends TestCase
 		$this->assertEquals(self::functionTest($number), $countOfDigits4);
 	}
 
-	//------------------>>Data provider for the functionTest
+	//------------------>>Data provider for the Test
 	function eqVals()
 	{
 		return [
